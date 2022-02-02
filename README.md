@@ -14,3 +14,5 @@ With the parts function simply issue the following code (after having activated 
 parts(model = Model.2, preds = 6) 
 
 That't it. Boom, all the stats. 
+
+A video demonstrating this function exists here: https://youtu.be/ZpUPMSOlZVQ
