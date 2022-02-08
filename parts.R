@@ -2,7 +2,7 @@
 
 parts<-function(model=NULL, pred=NULL){
   
-  values<-summary(Model)
+  values<-summary(model)
   R2<-values$r.squared[1]
   dfr<-values$df[2]
 #  pred<-values$df[1]
