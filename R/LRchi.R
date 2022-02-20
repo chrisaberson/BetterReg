@@ -12,10 +12,12 @@
 #'@param  x8 eighth predictor variable name
 #'@param  x9 ninth predictor variable name
 #'@param  x10 tenth predictor variable name
-#'@param  numpred number of predictors
+#'@param  numpred number of predict#'ors
 #'@examples
-#'LRchi(data=testlog, y=y, x1=x1, x2=x2,numpred=2)
+#'\donttest{LRchi(data=testlog, y="dv", x1="iv1", x2="iv2",numpred=2)}
 #'@return Likelihood Ratio Chi-square for Logistic Regression with up to 10 predictors
+#'@importFrom stats anova binomial glm hatvalues
+#'@importFrom utils tail
 #'@export
 #'
 #'

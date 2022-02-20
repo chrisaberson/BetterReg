@@ -45,7 +45,7 @@ LRchi(
 
 \item{x10}{tenth predictor variable name}
 
-\item{numpred}{number of predictors}
+\item{numpred}{number of predict#'ors}
 }
 \value{
 Likelihood Ratio Chi-square for Logistic Regression with up to 10 predictors
@@ -54,5 +54,5 @@ Likelihood Ratio Chi-square for Logistic Regression with up to 10 predictors
 Compute Likelihood Ratio Chi-square for Binomial Logistic Regression with up to 10 predictors
 }
 \examples{
-LRchi(data=testlog, y=y, x1=x1, x2=x2,numpred=2)
+\donttest{LRchi(data=testlog, y="dv", x1="iv1", x2="iv2",numpred=2)}
 }

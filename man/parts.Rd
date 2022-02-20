@@ -18,7 +18,7 @@ Squared partial and semipartial correlations for MRC with up to 10 predictors
 Compute squared partials and semi partial correlatoins for Multiple Regression
 }
 \examples{
-#'mymodel<-lm(y~x1+x2+x3+x4+x5+x6+x7+x8+x9+x10, data=testreg)
-parts(model=mymodel, pred=10)
+\donttest{mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)}
+\donttest{parts(model=mymodel, pred=5)}
 
 }

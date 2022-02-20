@@ -16,6 +16,6 @@ Tolerance for MR
 Compute tolerance for Multiple Regression
 }
 \examples{
-mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)
-tolerance(model=mymodel)
+\donttest{mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)}
+\donttest{tolerance(model=mymodel)}
 }

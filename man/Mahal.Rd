@@ -4,14 +4,14 @@
 \alias{Mahal}
 \title{Compute Mahalanobis Distance for Multiple Regression}
 \usage{
-Mahal(model = NULL, pred = NULL, values = 10)
+Mahal(model = NULL, pred = NULL, values = 5)
 }
 \arguments{
 \item{model}{name of model}
 
 \item{pred}{number of predictors}
 
-\item{values}{number of Mahal values to print (highest values). Default is 10.}
+\item{values}{number of Mahal values to print (highest values). Default is 10}
 }
 \value{
 Mahalanobis Distance to detect MV outliers
@@ -20,7 +20,7 @@ Mahalanobis Distance to detect MV outliers
 Compute Mahalanobis Distance for Multiple Regression
 }
 \examples{
-mymodel<-lm(y~x1+x2+x3+x4+x5+x6+x7+x8+x9+x10, data=testreg)
-Mahal(model=mymodel, pred=2, values = 10)
+\donttest{mymodel<-lm(y~x1+x2+x3+x4, testreg)}
+\donttest{Mahal(model=mymodel, pred=5, values = 10)}
 
 }

@@ -1,15 +1,12 @@
 #'Psuedo R-square Values for Binomial Logistic Regression
 #'
 #'@param model name of model
-#'
 #'@examples
-#'mymodel<-glm(y~x1+x2+x3+x4, testlog,family = binomial())
-#'psuedo(model=mymodel)
+#'\donttest{mymodel<-glm(dv~iv1+iv2+iv3+iv4, testlog,family = binomial())}
+#'\donttest{psuedo(model=mymodel)}
 #'
 #'@return Psuedo R-square Values for Logistic Regression
 #'@export
-#'
-#'
 
 psuedo<-function(model=NULL)
   {
