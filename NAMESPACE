@@ -3,7 +3,7 @@
 export(LRchi)
 export(Mahal)
 export(parts)
-export(psuedo)
+export(pseudo)
 export(tolerance)
 importFrom(stats,anova)
 importFrom(stats,binomial)

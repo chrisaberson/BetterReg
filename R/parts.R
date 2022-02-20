@@ -1,4 +1,4 @@
-#'Compute squared partials and semi partial correlatoins for Multiple Regression
+#'Compute squared semi partial correlatoins for Multiple Regression
 #'
 #'@param model name of model
 #'@param pred number of predictors
@@ -7,7 +7,7 @@
 #'\donttest{mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)}
 #'\donttest{parts(model=mymodel, pred=5)}
 #'
-#'@return Squared partial and semipartial correlations for MRC with up to 10 predictors
+#'@return Squared semipartial correlations for MRC with up to 10 predictors
 #'@export
 #'
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/parts.R
 \name{parts}
 \alias{parts}
-\title{Compute squared partials and semi partial correlatoins for Multiple Regression}
+\title{Compute squared semi partial correlatoins for Multiple Regression}
 \usage{
 parts(model = NULL, pred = NULL)
 }
@@ -12,10 +12,10 @@ parts(model = NULL, pred = NULL)
 \item{pred}{number of predictors}
 }
 \value{
-Squared partial and semipartial correlations for MRC with up to 10 predictors
+Squared semipartial correlations for MRC with up to 10 predictors
 }
 \description{
-Compute squared partials and semi partial correlatoins for Multiple Regression
+Compute squared semi partial correlatoins for Multiple Regression
 }
 \examples{
 \donttest{mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)}
