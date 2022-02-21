@@ -1,29 +1,13 @@
-title: ‘BetterReg: An R package for Useful Regression Statistics’  
-tags:  
-- R  
-- OLS Regression  
-- Logistic Regression  
-authors:  
-- name: Christopher L. Aberson  
-orcid: 0000-0003-3481-7177  
-affiliation: 1  
-affiliations:  
-- name: Cal Poly Humboldt  
-index: 1  
-date: 20 February 2022  
-bibliography: paper.bib  
-—
-
 # Summary
 
 Statistics such as squared semi partial correlations, tolerance, and
 Mahalanobis Distances are useful for reporting the results of OLS
-Regression \[e.g., @tabachnick\_using\_2019\]. Similarly values such as
-the Likelihood Ratio Chi-square (e.g., @cohen\_applied\_2015) and
-Likelihood R-square (@menard\_logistic\_2010). Such statistics are not
-part of base R (@r\_core\_team\_r\_2022) popular packages such *car*
-(@fox\_r\_2019). To fill these gaps, I developed BetterReg to provide
-these values.
+Regression (**tabachnick\_using\_2019?**). Similarly values such as the
+Likelihood Ratio Chi-square (**cohen\_applied\_2015?**)) and Likelihood
+R-square ((**menard\_logistic\_2010?**)). Such statistics are not part
+of base R ((**r\_core\_team\_r\_2022?**)) popular packages such *car*
+((**fox\_r\_2019?**)). To fill these gaps, I developed BetterReg to
+provide these values.
 
 Squared semipartial correlations provide a measure of uniquely explained
 variances that is on the same scale as *R*<sup>2</sup> values. Tolerance
@@ -109,5 +93,3 @@ The *Psuedo* function takes an existing model as input
     ## Nagelkerk R-squared  = 0.402
 
 # References
-
-nocite: ‘@\*’
