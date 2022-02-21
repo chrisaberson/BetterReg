@@ -18,7 +18,7 @@ bibliography: paper.bib
 
 Statistics such as squared semi partial correlations, tolerance, and
 Mahalanobis Distances are useful for reporting the results of OLS
-Regression (e.g., @tabachnick\_using\_2019). Similarly values such as
+Regression \[e.g., @tabachnick\_using\_2019\]. Similarly values such as
 the Likelihood Ratio Chi-square (e.g., @cohen\_applied\_2015) and
 Likelihood R-square (@menard\_logistic\_2010). Such statistics are not
 part of base R (@r\_core\_team\_r\_2022) popular packages such *car*
@@ -109,3 +109,5 @@ The *Psuedo* function takes an existing model as input
     ## Nagelkerk R-squared  = 0.402
 
 # References
+
+nocite: ‘@\*’
