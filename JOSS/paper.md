@@ -27,8 +27,8 @@ Mahalanobis Distances are useful for reporting the results of OLS
 Regression (@tabachnick_using_2019?). Similarly values such as the
 Likelihood Ratio Chi-square (@cohen_applied_2015)) and Likelihood
 R-square [@menard_logistic_2010]. Such statistics are not part
-of base R [@rcore] popular packages such *car*
-[fox_r_2019]. To fill these gaps, I developed BetterReg to
+of base R [@R_core_team] popular packages such *car*
+[*fox_r_2019]. To fill these gaps, I developed BetterReg to
 provide these values.
 
 Squared semipartial correlations provide a measure of uniquely explained
