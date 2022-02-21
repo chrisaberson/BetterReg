@@ -1,112 +1,105 @@
 ---
-title: 'BetterReg: An R package for Useful Regression Statistics'  
-tags:  
-  - R  
-  - OLS Regression  
-  - Logistic Regression  
-authors:  
-  - name: Christopher L. Aberson  
-    orcid: 0000-0003-3481-7177  
-    affiliation: 1  
-affiliations:  
- - name: Cal Poly Humboldt  
-   index: 1  
-date: 20 February 2022  
-bibliography: paper.bib
+title: 'Gala: A Python package for galactic dynamics'
+tags:
+  - Python
+  - astronomy
+  - dynamics
+  - galactic dynamics
+  - milky way
+authors:
+  - name: Adrian M. Price-Whelan^[co-first author] # note this makes a footnote saying 'co-first author'
+    orcid: 0000-0000-0000-0000
+    affiliation: "1, 2" # (Multiple affiliations must be quoted)
+  - name: Author Without ORCID^[co-first author] # note this makes a footnote saying 'co-first author'
+    affiliation: 2
+  - name: Author with no affiliation^[corresponding author]
+    affiliation: 3
+affiliations:
+ - name: Lyman Spitzer, Jr. Fellow, Princeton University
+   index: 1
+ - name: Institution Name
+   index: 2
+ - name: Independent Researcher
+   index: 3
+date: 13 August 2017
+bibliography: G:/My Drive/BetterReg workspace/JOSS/paper.bib
+
+# Optional fields if submitting to a AAS journal too, see this blog post:
+# https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing
+aas-doi: 10.3847/xxxxx <- update this with the DOI from AAS once you know it.
+aas-journal: Astrophysical Journal <- The name of the AAS journal.
 ---
 
 # Summary
 
-Statistics such as squared semi partial correlations, tolerance, and
-Mahalanobis Distances are useful for reporting the results of OLS
-Regression (@tabachnick_using_2019?). Similarly values such as the
-Likelihood Ratio Chi-square (@cohen_applied_2015)) and Likelihood
-R-square [@menard_logistic_2010]. Such statistics are not part
-of base R [@r_core_team_r_2022] popular packages such *car*
-[fox_r_2019]. To fill these gaps, I developed BetterReg to
-provide these values.
+The forces on stars, galaxies, and dark matter under external gravitational
+fields lead to the dynamical evolution of structures in the universe. The orbits
+of these bodies are therefore key to understanding the formation, history, and
+future state of galaxies. The field of "galactic dynamics," which aims to model
+the gravitating components of galaxies to study their structure and evolution,
+is now well-established, commonly taught, and frequently used in astronomy.
+Aside from toy problems and demonstrations, the majority of problems require
+efficient numerical tools, many of which require the same base code (e.g., for
+performing numerical orbit integration).
 
-Squared semipartial correlations provide a measure of uniquely explained
-variances that is on the same scale as *R*<sup>2</sup> values. Tolerance
-values address multicollinearity by addressing variance unexplained in a
-predictor. Mahalanabis Distances are a popular measure of multivariate
-outliers that are presented on an *χ*<sup>2</sup> scale. The Likelihood
-Ratio *χ*<sup>2</sup> provides a significance test that is more stable
-than the commonly presented Wald Test for logistic regression. The
-Likelihood Ratio *χ*<sup>2</sup> is the most widely recommended Pseudo
-*R*<sup>2</sup> statistic for logistic.
+# Statement of need
 
-# Useage
+`Gala` is an Astropy-affiliated Python package for galactic dynamics. Python
+enables wrapping low-level languages (e.g., C) for speed without losing
+flexibility or ease-of-use in the user-interface. The API for `Gala` was
+designed to provide a class-based and user-friendly interface to fast (C or
+Cython-optimized) implementations of common operations such as gravitational
+potential and force evaluation, orbit integration, dynamical transformations,
+and chaos indicators for nonlinear dynamics. `Gala` also relies heavily on and
+interfaces well with the implementations of physical units and astronomical
+coordinate systems in the `Astropy` package [@astropy] (`astropy.units` and
+`astropy.coordinates`).
 
-BetterReg functions require existing regression models (either OLS or
-Logistic for most statistics), dataset names (for some approaches),
-number of predictors (some functions), and desired amount of output
-(Mahal function).
+`Gala` was designed to be used by both astronomical researchers and by
+students in courses on gravitational dynamics or astronomy. It has already been
+used in a number of scientific publications [@Pearson:2017] and has also been
+used in graduate courses on Galactic dynamics to, e.g., provide interactive
+visualizations of textbook material [@Binney:2008]. The combination of speed,
+design, and support for Astropy functionality in `Gala` will enable exciting
+scientific explorations of forthcoming data releases from the *Gaia* mission
+[@gaia] by students and experts alike.
 
-## *part* function for squared semipartial correlations
+# Mathematics
 
-The *part* function requires an existing LM model and indication of
-number of predictors.
+Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
 
-    library(BetterReg)
-    mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)
-    parts(model=mymodel, pred=5)
+Double dollars make self-standing equations:
 
-    ## Predictor 1: semi partial = 0.032; squared semipartial = 0.001
+$$\Theta(x) = \left\{\begin{array}{l}
+0\textrm{ if } x < 0\cr
+1\textrm{ else}
+\end{array}\right.$$
 
-    ## Predictor 2: semi partial = 0.307; squared semipartial = 0.094
+You can also use plain \LaTeX for equations
+\begin{equation}\label{eq:fourier}
+\hat f(\omega) = \int_{-\infty}^{\infty} f(x) e^{i\omega x} dx
+\end{equation}
+and refer to \autoref{eq:fourier} from text.
 
-    ## Predictor 3: semi partial = 0.268; squared semipartial = 0.072
+# Citations
 
-    ## Predictor 4: semi partial = 0.134; squared semipartial = 0.018
+Citations to entries in paper.bib should be in
+[rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
+format.
 
-    ## Predictor 5: semi partial = 0.241; squared semipartial = 0.058
+If you want to cite a software repository URL (e.g. something on GitHub without a preferred
+citation) then you can do it with the example BibTeX entry below for @fidgit.
 
-## *tolerance* function for multicollinearity assumptions
+For a quick reference, the following citation commands can be used:
+- `@author:2001`  ->  "Author et al. (2001)"
+- `[@author:2001]` -> "(Author et al., 2001)"
+- `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
 
-The *tolerance* function requires only a model.
 
-    mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)
-    tolerance(model=mymodel)
 
-    ##        x1        x2        x3        x4        x5 
-    ## 0.9976977 0.9990479 0.9931082 0.9953317 0.9980628
+# Acknowledgements
 
-## *Mahal* function for detecting multivariate outliers
-
-The *Mahal* function requires model, predictors, and desired number of
-values to output.
-
-    mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)
-    Mahal(model=mymodel, pred=5, values=10)
-
-    ##      537      770      342      760      299      982      446      174 
-    ## 14.56342 15.03188 15.56224 15.60986 16.52869 16.80958 17.38597 18.11072 
-    ##      458      530 
-    ## 20.02762 25.09934
-
-## *LRchi* function for Logistic Regression Coefficients
-
-The *LRchi* function takes input for the dependent variable name (y), up
-to 10 predictors (x1, x2, etc.), and the number of predictors.
-
-    LRchi(data=testlog, y="dv", x1="iv1", x2="iv2",numpred=2)
-
-    ## Predictor: iv1; LR squared 34.09, p= 0
-
-    ## Predictor: iv2; LR squared 0.19, p= 0.67
-
-## *Pseudo* function for Logistic Regression Effect Size
-
-The *Psuedo* function takes an existing model as input
-
-    mymodel<-glm(dv~iv1+iv2+iv3+iv4, testlog,family = binomial())
-    pseudo(model=mymodel)
-
-    ## Likelihood Ratio R-squared (McFadden, Recommended) = 0.26
-
-    ## Cox-Snell R-squared) = 0.301
-
-    ## Nagelkerk R-squared  = 0.402
+We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
+Oh, and support from Kathryn Johnston during the genesis of this project.
 
 # References
