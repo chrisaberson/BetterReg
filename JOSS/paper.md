@@ -18,10 +18,11 @@ bibliography: paper.bib
 
 Statistics such as squared semi partial correlations, tolerance, and
 Mahalanobis Distances are useful for reporting the results of OLS
-Regression (e.g., @Tabachnick). Similarly values such as the Likelihood
-Ratio Chi-square (e.g., @Cohen) and Likelihood R-square (@McFadden).
-Such statistics are not part of base R (@RCoreteam) popular packages
-such *car* (@Fox). To fill these gaps, I developed BetterReg to provide
+Regression (e.g., @tabachnick\_using\_2019). Similarly values such as
+the Likelihood Ratio Chi-square (e.g., @cohen\_applied\_2015) and
+Likelihood R-square (@menard\_logistic\_2010). Such statistics are not
+part of base R (@r\_core\_team\_r\_2022) popular packages such *car*
+(@fox\_r\_2019). To fill these gaps, I developed BetterReg to provide
 these values.
 
 Squared semipartial correlations provide a measure of uniquely explained
