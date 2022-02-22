@@ -25,17 +25,17 @@ aas-journal: Astrophysical Journal <- The name of the AAS journal.
 Statistics such as squared semi partial correlation, tolerance, and
 Mahalanobis Distances are useful for reporting the results of OLS
 Regression [e.g., @tabachnick_using_2019]. Similarly, values such as the
-Likelihood Ratio $/chi^2$ [e.g. @cohen_applied_2015] and Likelihood
+Likelihood Ratio $\chi^2$ [e.g. @cohen_applied_2015] and Likelihood
 $R^2$ [@menard_logistic_2010]. 
 
 Squared semipartial correlations $sr^2$ provide a measure of uniquely explained
 variances that is on the same scale as $R^2$ values. Tolerance
 values address multicollinearity by addressing variance unexplained in a
 predictor. Mahalanabis Distances are a popular measure of multivariate
-outliers that are presented on an $/chi^2$ scale. The Likelihood
-Ratio $/chi^2$ provides a significance test that is more stable
+outliers that are presented on an $\chi^2$ scale. The Likelihood
+Ratio $\chi^2$ provides a significance test that is more stable
 than the commonly presented Wald Test for logistic regression. The
-Likelihood Ratio $/chi^2$ is the most widely recommended Pseudo
+Likelihood Ratio $\chi^2$ is the most widely recommended Pseudo
 $R^2$ statistic for logistic.
 
 # Statement of Need
