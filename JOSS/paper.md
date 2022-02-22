@@ -22,35 +22,36 @@ aas-journal: Astrophysical Journal <- The name of the AAS journal.
 
 # Summary
 
-Statistics such as squared semi partial correlations, tolerance, and
+Statistics such as squared semi partial correlation, tolerance, and
 Mahalanobis Distances are useful for reporting the results of OLS
-Regression (@tabachnick_using_2019?). Similarly values such as the
-Likelihood Ratio Chi-square (@cohen_applied_2015)) and Likelihood
-R-square [@menard_logistic_2010]. Such statistics are not part
-of base R [@R_core_team] popular packages such *car*
-[@fox_r_2019]. To fill these gaps, I developed BetterReg to
-provide these values.
+Regression [e.g., @tabachnick_using_2019]. Similarly, values such as the
+Likelihood Ratio $/chi^2$ [e.g. @cohen_applied_2015] and Likelihood
+$R^2$ [@menard_logistic_2010]. 
 
-Squared semipartial correlations provide a measure of uniquely explained
-variances that is on the same scale as *R*<sup>2</sup> values. Tolerance
+Squared semipartial correlations $sr^2$ provide a measure of uniquely explained
+variances that is on the same scale as $R^2$ values. Tolerance
 values address multicollinearity by addressing variance unexplained in a
 predictor. Mahalanabis Distances are a popular measure of multivariate
-outliers that are presented on an *χ*<sup>2</sup> scale. The Likelihood
-Ratio *χ*<sup>2</sup> provides a significance test that is more stable
+outliers that are presented on an $/chi^2$ scale. The Likelihood
+Ratio $/chi^2$ provides a significance test that is more stable
 than the commonly presented Wald Test for logistic regression. The
-Likelihood Ratio *χ*<sup>2</sup> is the most widely recommended Pseudo
-*R*<sup>2</sup> statistic for logistic.
+Likelihood Ratio $/chi^2$ is the most widely recommended Pseudo
+$R^2$ statistic for logistic.
+
+# Statement of Need
+
+The statistics provided in this package are not part of base R [@R_core_team] or popular packages such `car`[@fox_r_2019]. To fill these gaps, I developed `BetterReg` to provide these values.
 
 # Useage
 
-BetterReg functions require existing regression models (either OLS or
+`BetterReg` functions require existing regression models (either OLS or
 Logistic for most statistics), dataset names (for some approaches),
 number of predictors (some functions), and desired amount of output
-(Mahal function).
+(`Mahal` function).
 
-## *part* function for squared semipartial correlations
+## `part` function for squared semipartial correlations
 
-The *part* function requires an existing LM model and indication of
+The `part` function requires an existing LM model and indication of
 number of predictors.
 
     library(BetterReg)
@@ -67,9 +68,9 @@ number of predictors.
 
     ## Predictor 5: semi partial = 0.241; squared semipartial = 0.058
 
-## *tolerance* function for multicollinearity assumptions
+## `tolerance` function for multicollinearity assumptions
 
-The *tolerance* function requires only a model.
+The `tolerance` function requires only a model.
 
     mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)
     tolerance(model=mymodel)
@@ -77,9 +78,9 @@ The *tolerance* function requires only a model.
     ##        x1        x2        x3        x4        x5 
     ## 0.9976977 0.9990479 0.9931082 0.9953317 0.9980628
 
-## *Mahal* function for detecting multivariate outliers
+## `Mahal` function for detecting multivariate outliers
 
-The *Mahal* function requires model, predictors, and desired number of
+The `Mahal` function requires model, predictors, and desired number of
 values to output.
 
     mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)
@@ -90,9 +91,9 @@ values to output.
     ##      458      530 
     ## 20.02762 25.09934
 
-## *LRchi* function for Logistic Regression Coefficients
+## `LRchi` function for Logistic Regression Coefficients
 
-The *LRchi* function takes input for the dependent variable name (y), up
+The `LRchi` function takes input for the dependent variable name (y), up
 to 10 predictors (x1, x2, etc.), and the number of predictors.
 
     LRchi(data=testlog, y="dv", x1="iv1", x2="iv2",numpred=2)
@@ -101,9 +102,9 @@ to 10 predictors (x1, x2, etc.), and the number of predictors.
 
     ## Predictor: iv2; LR squared 0.19, p= 0.67
 
-## *Pseudo* function for Logistic Regression Effect Size
+## `Pseudo` function for Logistic Regression Effect Size
 
-The *Psuedo* function takes an existing model as input
+The `Psuedo` function takes an existing model as input
 
     mymodel<-glm(dv~iv1+iv2+iv3+iv4, testlog,family = binomial())
     pseudo(model=mymodel)
