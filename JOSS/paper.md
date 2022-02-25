@@ -32,11 +32,11 @@ Squared semipartial correlations $sr^2$ provide a measure of uniquely explained
 variances that is on the same scale as $R^2$ values. Tolerance
 values address multicollinearity by addressing variance unexplained in a
 predictor. Mahalanabis Distances are a popular measure of multivariate
-outliers that are presented on an $\chi^2$ scale. The Likelihood
+outliers presented on an $\chi^2$ scale. The Likelihood
 Ratio $\chi^2$ provides a significance test that is more stable
 than the commonly presented Wald Test for logistic regression. The
 Likelihood Ratio $\chi^2$ is the most widely recommended Pseudo
-$R^2$ statistic for logistic.
+$R^2$ statistic for logistic. `BetterReg` is available on CRAN. 
 
 # Statement of Need
 
@@ -47,7 +47,7 @@ The statistics provided in this package are not part of base R [@R_core_team] or
 `BetterReg` functions require existing regression models (either OLS or
 Logistic for most statistics), dataset names (for some approaches),
 number of predictors (some functions), and desired amount of output
-(`Mahal` function).
+(`Mahal` function). That package includes two dataset `testreg` and `testlog` to allow for tests of examples within the package. 
 
 ## `part` function for squared semipartial correlations
 
