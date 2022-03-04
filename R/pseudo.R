@@ -2,14 +2,15 @@
 #'
 #'@param model name of model
 #'@examples
-#'\donttest{mymodel<-glm(dv~iv1+iv2+iv3+iv4, testlog,family = binomial())}
-#'\donttest{pseudo(model=mymodel)}
+#'mymodel<-glm(dv~iv1+iv2+iv3+iv4, testlog,family = binomial())
+#'pseudo(model=mymodel)
 #'
 #'@return Pseudo R-square Values for Logistic Regression
 #'@export
 
 pseudo<-function(model=NULL)
   {
+mymodel<-model
 nulldev<-mymodel$null.deviance
 moddev<-mymodel$deviance
 n<-mymodel$df.null+1
