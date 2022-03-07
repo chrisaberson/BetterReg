@@ -2,6 +2,7 @@
 
 export(LRchi)
 export(Mahal)
+export(indbcomp)
 export(parts)
 export(pseudo)
 export(tolerance)
@@ -9,4 +10,5 @@ importFrom(stats,anova)
 importFrom(stats,binomial)
 importFrom(stats,glm)
 importFrom(stats,hatvalues)
+importFrom(stats,pt)
 importFrom(utils,tail)
