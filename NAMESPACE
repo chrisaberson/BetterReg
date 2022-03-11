@@ -2,6 +2,7 @@
 
 export(LRchi)
 export(Mahal)
+export(R2change)
 export(indbcomp)
 export(parts)
 export(pseudo)
