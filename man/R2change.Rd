@@ -14,3 +14,8 @@ R2change(model1 = NULL, model2 = NULL)
 \description{
 R-square change for Hierarchical Multiple Regression
 }
+\examples{
+mymodel1<-lm(y~x1+x2, data=testreg)
+mymodel2<-lm(y~x1+x2+x3+x4, data=testreg)
+R2change(model1=mymodel1, model2=mymodel2)
+}
