@@ -12,10 +12,9 @@
 #'@param  x8 eighth predictor variable name
 #'@param  x9 ninth predictor variable name
 #'@param  x10 tenth predictor variable name
-#'@param  numpred number of predict#'ors
+#'@param  numpred number of predictors
 #'@examples
-#'\donttest{LRchi(data=testlog, y="dv", x1="iv1", x2="iv2",numpred=2)}
-#'@return Likelihood Ratio Chi-square for Logistic Regression with up to 10 predictors
+#'LRchi(data=testlog, y="dv", x1="iv1", x2="iv2",numpred=2)
 #'@importFrom stats anova binomial glm hatvalues
 #'@importFrom utils tail
 #'@export
@@ -24,43 +23,43 @@
 LRchi<-function(data=NULL,y=NULL, x1=NULL, x2=NULL,x3=NULL,x4=NULL,x5=NULL,x6=NULL,
                 x7=NULL,x8=NULL,x9=NULL,x10=NULL,numpred=NULL){
 
-if (numpred ==2)
+  if (numpred ==2)
   {
-xx<-dplyr::select(data,y,x1,x2)
-xx<-as.data.frame(xx)
-Model<-glm(xx[,1]~xx[,2]+xx[,3], family = binomial())
-Model.1<-glm(xx[,1]~xx[,3], family = binomial())
-Model.2<-glm(xx[,1]~xx[,2], family = binomial())
-comp.1<-anova(Model.1,Model, test="Chisq")
-comp.2<-anova(Model.2,Model, test="Chisq")
-LR.1<-round(comp.1$Deviance[2],2)
-p.1<-round(comp.1$`Pr(>Chi)`[2],2)
-LR.2<-round(comp.2$Deviance[2],2)
-p.2<-round(comp.2$`Pr(>Chi)`[2],2)
-message("Predictor: ", x1, "; LR squared ",LR.1, ", p= ", p.1)
-message("Predictor: ", x2, "; LR squared ",LR.2, ", p= ", p.2)
-}
+    xx<-dplyr::select(data,y,x1,x2)
+    xx<-as.data.frame(xx)
+    Model<-glm(xx[,1]~xx[,2]+xx[,3], family = binomial())
+    Model.1<-glm(xx[,1]~xx[,3], family = binomial())
+    Model.2<-glm(xx[,1]~xx[,2], family = binomial())
+    comp.1<-anova(Model.1,Model, test="Chisq")
+    comp.2<-anova(Model.2,Model, test="Chisq")
+    LR.1<-round(comp.1$Deviance[2],2)
+    p.1<-round(comp.1$`Pr(>Chi)`[2],2)
+    LR.2<-round(comp.2$Deviance[2],2)
+    p.2<-round(comp.2$`Pr(>Chi)`[2],2)
+    message("Predictor: ", x1, "; LR squared ",LR.1, ", p= ", p.1)
+    message("Predictor: ", x2, "; LR squared ",LR.2, ", p= ", p.2)
+  }
   if (numpred ==3)
-{
-xx<-dplyr::select(data,y,x1,x2,x3)
-xx<-as.data.frame(xx)
-Model<-glm(xx[,1]~xx[,2]+xx[,3]+xx[,4], family = binomial())
-Model.1<-glm(xx[,1]~xx[,3]+xx[,4], family = binomial())
-Model.2<-glm(xx[,1]~xx[,2]+xx[,4], family = binomial())
-Model.3<-glm(xx[,1]~xx[,2]+xx[,3], family = binomial())
-comp.1<-anova(Model.1,Model, test="Chisq")
-comp.2<-anova(Model.2,Model, test="Chisq")
-comp.3<-anova(Model.3,Model, test="Chisq")
-LR.1<-round(comp.1$Deviance[2],2)
-p.1<-round(comp.1$`Pr(>Chi)`[2],2)
-LR.2<-round(comp.2$Deviance[2],2)
-p.2<-round(comp.2$`Pr(>Chi)`[2],2)
-LR.3<-round(comp.3$Deviance[2],2)
-p.3<-round(comp.3$`Pr(>Chi)`[2],2)
+  {
+    xx<-dplyr::select(data,y,x1,x2,x3)
+    xx<-as.data.frame(xx)
+    Model<-glm(xx[,1]~xx[,2]+xx[,3]+xx[,4], family = binomial())
+    Model.1<-glm(xx[,1]~xx[,3]+xx[,4], family = binomial())
+    Model.2<-glm(xx[,1]~xx[,2]+xx[,4], family = binomial())
+    Model.3<-glm(xx[,1]~xx[,2]+xx[,3], family = binomial())
+    comp.1<-anova(Model.1,Model, test="Chisq")
+    comp.2<-anova(Model.2,Model, test="Chisq")
+    comp.3<-anova(Model.3,Model, test="Chisq")
+    LR.1<-round(comp.1$Deviance[2],2)
+    p.1<-round(comp.1$`Pr(>Chi)`[2],2)
+    LR.2<-round(comp.2$Deviance[2],2)
+    p.2<-round(comp.2$`Pr(>Chi)`[2],2)
+    LR.3<-round(comp.3$Deviance[2],2)
+    p.3<-round(comp.3$`Pr(>Chi)`[2],2)
 
-message("Predictor: ", x1, "; LR squared ",LR.1, ", p= ", p.1)
-message("Predictor: ", x2, "; LR squared ",LR.2, ", p= ", p.2)
-message("Predictor: ", x3, "; LR squared ",LR.3, ", p= ", p.3)
+    message("Predictor: ", x1, "; LR squared ",LR.1, ", p= ", p.1)
+    message("Predictor: ", x2, "; LR squared ",LR.2, ", p= ", p.2)
+    message("Predictor: ", x3, "; LR squared ",LR.3, ", p= ", p.3)
   }
   if (numpred ==4)
   {
@@ -121,7 +120,7 @@ message("Predictor: ", x3, "; LR squared ",LR.3, ", p= ", p.3)
     message("Predictor: ", x4, "; LR squared ",LR.4, ", p= ", p.4)
     message("Predictor: ", x5, "; LR squared ",LR.5, ", p= ", p.5)
 
-      }
+  }
   if (numpred ==6)
   {
     xx<-dplyr::select(data,y,x1,x2,x3,x4,x5,x6)
@@ -203,7 +202,7 @@ message("Predictor: ", x3, "; LR squared ",LR.3, ", p= ", p.3)
     message("Predictor: ", x5, "; LR squared ",LR.5, ", p= ", p.5)
     message("Predictor: ", x6, "; LR squared ",LR.6, ", p= ", p.6)
     message("Predictor: ", x7, "; LR squared ",LR.7, ", p= ", p.7)
-      }
+  }
   if (numpred ==8)
   {
     xx<-dplyr::select(data,y,x1,x2,x3,x4,x5,x6,x7,x8)
@@ -252,7 +251,7 @@ message("Predictor: ", x3, "; LR squared ",LR.3, ", p= ", p.3)
     message("Predictor: ", x7, "; LR squared ",LR.7, ", p= ", p.7)
     message("Predictor: ", x8, "; LR squared ",LR.8, ", p= ", p.8)
 
-      }
+  }
   if (numpred ==9)
   {
     xx<-dplyr::select(data,y,x1,x2,x3,x4,x5,x6,x7,x8,x9)
@@ -366,5 +365,4 @@ message("Predictor: ", x3, "; LR squared ",LR.3, ", p= ", p.3)
     message("Predictor: ", x10, "; LR squared ",LR.10, ", p= ", p.10)
   }
 
-  }
-
+}
