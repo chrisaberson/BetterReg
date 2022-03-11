@@ -11,7 +11,7 @@
 R2change<-function(model1=NULL, model2=NULL){
 comp<-stats::anova(model1,model2)
 df1<-comp$Df[2]
-df2<-mymodel2$df.residual
+df2<-model2$df.residual
 m1<-summary(model1)
 m2<-summary(model2)
 r2.1<-m1$r.squared
