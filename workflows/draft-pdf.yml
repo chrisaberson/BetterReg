@@ -11,8 +11,7 @@ jobs:
         uses: openjournals/openjournals-draft-action@master
         with:
           journal: joss
-          chrisaberson/BetterReg/JOSS
-          paper-path: paper.md
+          paper-path: chrisaberson/BetterReg/JOSSpaper.md
       - name: Upload
         uses: actions/upload-artifact@v1
         with:
