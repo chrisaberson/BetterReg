@@ -29,25 +29,18 @@ Likelihood Ratio $\chi^2$ [e.g. @cohen_applied_2015] and Likelihood
 $R^2$ [@menard_logistic_2010]. 
 
 Squared semipartial correlations $sr^2$ provide a measure of uniquely explained
-variances that is on the same scale as $R^2$ values. Tolerance
-values address multicollinearity by addressing variance unexplained in a
-predictor. Mahalanabis Distances are a popular measure of multivariate
-outliers presented on an $\chi^2$ scale. The Likelihood
-Ratio $\chi^2$ provides a significance test that is more stable
-than the commonly presented Wald Test for logistic regression. The
-Likelihood Ratio $\chi^2$ is the most widely recommended Pseudo
-$R^2$ statistic for logistic. `BetterReg` is available on CRAN. 
+variances that is on the same scale as $R^2$ values. $R^2 change$ values quantify how much a set of predictors improves prediction. Comparisons of both dependent and independent regression coefficients provide a significance test addressing whether one coefficient is stronger than another. Tolerance values address multicollinearity by addressing variance unexplained in a predictor. Mahalanabis Distances are a popular measure of multivariate outliers presented on an $\chi^2$ scale. The Likelihood Ratio $\chi^2$ provides a significance test that is more stable than the commonly presented Wald Test for logistic regression. The Likelihood Ratio $\chi^2$ is the most widely recommended Pseudo $R^2$ statistic for logistic. `BetterReg` is available on CRAN and GitHub (for developmental versions). 
 
 # Statement of Need
 
-The statistics provided in this package are not part of base R [@R_core_team] or popular packages such `car`[@fox_r_2019]. To fill these gaps, I developed `BetterReg` to provide these values.
+The statistics provided in this package are not part of base R [@R_core_team] or popular packages such `car`[@fox_r_2019]. To fill these gaps, I developed `BetterReg`.
 
 # Useage
 
 `BetterReg` functions require existing regression models (either OLS or
-Logistic for most statistics), dataset names (for some approaches),
+Logistic for most statistics), dataset (for some approaches),
 number of predictors (some functions), and desired amount of output
-(`Mahal` function). That package includes two dataset `testreg` and `testlog` to allow for tests of examples within the package. 
+(`Mahal` function). 
 
 ## `part` function for squared semipartial correlations
 
@@ -59,14 +52,45 @@ number of predictors.
     parts(model=mymodel, pred=5)
 
     ## Predictor 1: semi partial = 0.032; squared semipartial = 0.001
-
     ## Predictor 2: semi partial = 0.307; squared semipartial = 0.094
-
     ## Predictor 3: semi partial = 0.268; squared semipartial = 0.072
-
     ## Predictor 4: semi partial = 0.134; squared semipartial = 0.018
-
     ## Predictor 5: semi partial = 0.241; squared semipartial = 0.058
+    
+## `R2change` function for addressing improvement in $R^2$ between models
+
+The R2change function requires two models. Each model must have the same number of rows. 
+
+    R2change(model1=mymodel1, model2=mymodel2)
+
+    ## R-square change = 0.09
+    ## F(2,995) = 54.764, p = 2.73174803699611e-23
+    
+## `depbcomp` function for comparing dependent regression coefficients
+
+The `depbcomp` function takes requires data and variable names. Dependent coefficients are coefficients from the same regression model. 
+
+    depbcomp(data=testreg,y=y,x1=x1,x2=x2,x3=x3,x4=x4,x5=x5, numpred=5,comps="abs")
+
+    ## Pred 1 vs. Pred 2  : t = 7.004, p = 4.57522908448027e-12
+    ## Pred 1 vs. Pred 3  : t = 6.21, p = 7.79647457704868e-10
+    ## Pred 1 vs. Pred 4  : t = 2.751, p = 0.00604702058333784
+    ## Pred 1 vs. Pred 5  : t = 5.31, p = 1.3508334650858e-07
+    ## Pred 2 vs. Pred 3  : t = 0.681, p = 0.495955077475793
+    ## Pred 2 vs. Pred 4  : t = 4.189, p = 3.05299716290008e-05
+    ## Pred 2 vs. Pred 5  : t = 1.612, p = 0.107363700946729
+    ## Pred 3 vs. Pred 4  : t = 3.444, p = 0.000596991746199649
+    ## Pred 3 vs. Pred 5  : t = 0.891, p = 0.373356929374812
+    ## Pred 4 vs. Pred 5  : t = 2.553, p = 0.0108146623166698
+
+## `indbcomp` function for comparing independent regression coefficients
+
+The `indbcomp` function requires data and variable names from two different samples. Independent coefficients are coefficients from different samples using the same regression model. 
+
+indbcomp(model1 = model1_2, model2 = model2_2, comps="abs")
+
+    ## Predictor 1:  t = 0.362, p = 0.718
+    ## Predictor 2:  t = 0.265, p = 0.792
 
 ## `tolerance` function for multicollinearity assumptions
 
@@ -110,9 +134,7 @@ The `Psuedo` function takes an existing model as input
     pseudo(model=mymodel)
 
     ## Likelihood Ratio R-squared (McFadden, Recommended) = 0.26
-
     ## Cox-Snell R-squared) = 0.301
-
     ## Nagelkerk R-squared  = 0.402
 
 # References
