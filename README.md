@@ -1,10 +1,22 @@
+# BetterReg Readme
+
+Chris Aberson March 21, 2022
+
 # BetterReg
-Better statistics for regression (OLS and logistic)
 
-Functions for squared semi-partial correlations, tolerance, Mahalanobis Distance, comparison of independent and dependent regression coefficients, comparing independent (two models, different samples) and dependent (same model) regression coefficients, R-square change, Likelihood Ratio Chi-Square, and Psuedo R Square values.
+This package provides tools for statistics that are not provided in base
+R packages for linear regression and logistic regression. Functions
+provide squared semi-partial correlations, tolerance, Mahalanobis
+Distances, Likelihood Ratio Chi-square, and Pseudo R-square.
 
-To get the package use this code:
-devtools::install_github("chrisaberson/BetterReg") 
+### Prerequisites
 
-A video demonstrating the parts function exists here: https://youtu.be/ZpUPMSOlZVQ
+I built this under R 4.1.1
 
+## Authors
+
+-   **Chris Aberson** [chrisaberson](https://github.com/chrisaberson)
+
+## License
+
+This project is licensed under GNU General Public License version 3.
