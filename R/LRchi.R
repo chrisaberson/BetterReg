@@ -15,7 +15,7 @@
 #'@param  numpred number of predictors
 #'@examples
 #'LRchi(data=testlog, y="dv", x1="iv1", x2="iv2",numpred=2)
-#'@importFrom stats anova binomial glm hatvalues
+#'@importFrom stats anova binomial glm hatvalues cor lm var
 #'@importFrom utils tail
 #'@export
 #'
