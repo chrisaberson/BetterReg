@@ -13,6 +13,10 @@ Distances, Likelihood Ratio Chi-square, and Pseudo R-square.
 
 I built this under R 4.1.1
 
+## Installation
+
+To install from github use devtools::install_github("chrisaberson/BetterReg", force=TRUE) or install directly from CRAN.
+
 ## Authors
 
 -   **Chris Aberson** [chrisaberson](https://github.com/chrisaberson)
