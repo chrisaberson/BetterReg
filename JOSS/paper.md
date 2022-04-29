@@ -35,7 +35,7 @@ variances that is on the same scale as $R^2$ values. $R^2 change$ values quantif
 
 The statistics provided in this package are not part of base R [@R_core_team] or popular packages such `car`[@fox_r_2019]. To fill these gaps, I developed `BetterReg`.
 
-# Useage
+# Usage
 
 `BetterReg` functions require existing regression models (either OLS or
 Logistic for most statistics), dataset (for some approaches),
