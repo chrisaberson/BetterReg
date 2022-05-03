@@ -19,7 +19,7 @@ I built this under R 4.1.1
 
 ## Dependencies  
 
-car (??? 3.0-0), stats (??? 3.5.0), dplyr (??? 0.8.0)
+car (>= 3.0-0), stats (>= 3.5.0), dplyr (>= 0.8.0)
 
 ## Issues and Contributions  
 
