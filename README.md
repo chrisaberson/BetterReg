@@ -23,13 +23,13 @@ car (>= 3.0-0), stats (>= 3.5.0), dplyr (>= 0.8.0)
 
 ## Issues and Contributions  
 
-Please post issues using the link above (titled "isssues"). Those interested in contributing to further development should create a pull request. 
+Please post issues using the link above (titled "issues"). Those interested in contributing to further development should create a pull request. 
 
 ## License  
 
 This project is licensed under GNU General Public License version 3.
 
-## Example 1 OLS Regression
+## Example 1: OLS Regression
 
 Using data from Aberson (2007), the analyses that follow predict support for Affirmative Action (AA) in year 4 of college from incomming attitudes, personal experience with discrimination, liberality, gender, and economic concern for the future. In a later example, I add perceptions of the prevalence of discrimination, endorsement of meritocracy, and partipation in campus diversity events. 
 
@@ -72,22 +72,24 @@ F(3,704) = 70.537, p = 6.81538788796511e-40
 
 ## Example 2: Logistic Regression functions
 
-In this example, taken from Cohen, Cohen, West, and Aiken (2015), 
+In this example, taken from Cohen, Cohen, West, and Aiken (2015), women's compliance with mammography recommendations (i.e., yearly screening in this case) is predicted from physicians recommendation, knowledge of mammography, perceived barriers, and perceived benifits. 
 
-The LRchi function takes input for the dependent variable name (y), up to 10 predictors (x1, x2, etc.), and the number of predictors.  
+First, run a logistic regression model. 
 
-LRchi(data=testlog, y="dv", x1="iv1", x2="iv2",numpred=2)  
+Model4<-glm(comply~physrec+knowledg+benefits+barriers, data=logistic2, family = binomial())
 
-Predictor: iv1; LR squared 34.09, p= 0  
-Predictor: iv2; LR squared 0.19, p= 0.67  
+The LRchi command requires the name of the dataset, definition of all variables in mode (y, x1, x2, etc.), and the number of model predictors. 
 
-### Pseudo function for Logistic Regression Effect Size  
+LRchi(data=logistic2, y="comply",x1="physrec", x2="knowledg", x3="benefits",x4="barriers", numpred=4)
+ Predictor: physrec; LR squared 16.67, p= 0
+ Predictor: knowledg; LR squared 0.01, p= 0.94
+ Predictor: benefits; LR squared 5.29, p= 0.02
+ Predictor: barriers; LR squared 13.77, p= 0
 
-The Psuedo function takes an existing model as input  
+The Psuedo function requires only an existing model as input.   
 
-mymodel<-glm(dv~iv1+iv2+iv3+iv4, testlog,family = binomial())  
-pseudo(model=mymodel)  
+pseudo(model = Model4)
+ Likelihood Ratio R-squared (McFadden, Recommended) = 0.26
+ Cox-Snell R-squared) = 0.301
+ Nagelkerk R-squared  = 0.402
 
-Likelihood Ratio R-squared (McFadden, Recommended) = 0.26  
-Cox-Snell R-squared) = 0.301  
-Nagelkerk R-squared  = 0.402  
