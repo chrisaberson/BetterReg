@@ -50,11 +50,10 @@ Predictor 5: semi partial = 0.032; squared semipartial = 0.001
 Mahalanobis values require input of model and predictors as well as the number of values to return (10 is the default). 
 
 Mahal(model=xx, pred=5, values=10) 
-       60      247      639      703      133      157      129      431  
- 11.08698 11.08698 11.77189 11.93773 12.34983 13.68620 14.15117 14.50515  
+
+       60      247      639      703      133      157      129      431     24      655  
+ 11.08698 11.08698 11.77189 11.93773 12.34983 13.68620 14.15117 14.50515 14.72140 15.27508     
  
-       24      655  
- 14.72140 15.27508  
 
 The tolerance command requires only the model name. 
 
