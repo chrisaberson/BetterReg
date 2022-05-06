@@ -58,8 +58,9 @@ Mahal(model=xx, pred=5, values=10)
 The tolerance command requires only the model name. 
 
 tolerance(model=xx)  
-AA_Initial   pers_exp    liberal     female   economic 
-0.9464682  0.9904156  0.9058256  0.9418196  0.9910559  
+AA_Initial   pers_exp    liberal     female   economic  
+
+0.9464682  0.9904156  0.9058256  0.9418196  0.9910559   
 
 R2change compares two models. Below, I added merit, discrimination, and diversity participation to the model (xx2).
 the R2change command takes model1 (xx) and compares it to model2 (xx2). Note that this approach is only for models that are adding variables to a previous model.
@@ -80,8 +81,9 @@ Model4<-glm(comply~physrec+knowledg+benefits+barriers, data=logistic2, family = 
 
 The LRchi command requires the name of the dataset, definition of all variables in mode (y, x1, x2, etc.), and the number of model predictors. 
 
-LRchi(data=logistic2, y="comply",x1="physrec", x2="knowledg", x3="benefits",x4="barriers", numpred=4) 
- Predictor: physrec; LR squared 16.67, p= 0 
+LRchi(data=logistic2, y="comply",x1="physrec", x2="knowledg", x3="benefits",x4="barriers", numpred=4)  
+
+ Predictor: physrec; LR squared 16.67, p= 0  
  Predictor: knowledg; LR squared 0.01, p= 0.94 
  Predictor: benefits; LR squared 5.29, p= 0.02 
  Predictor: barriers; LR squared 13.77, p= 0 
@@ -89,7 +91,8 @@ LRchi(data=logistic2, y="comply",x1="physrec", x2="knowledg", x3="benefits",x4="
 The Psuedo function requires only an existing model as input.   
 
 pseudo(model = Model4) 
- Likelihood Ratio R-squared (McFadden, Recommended) = 0.26 
- Cox-Snell R-squared) = 0.301 
- Nagelkerk R-squared  = 0.402 
+
+Likelihood Ratio R-squared (McFadden, Recommended) = 0.26 
+Cox-Snell R-squared) = 0.301 
+Nagelkerk R-squared  = 0.402 
 
