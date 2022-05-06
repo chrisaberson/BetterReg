@@ -69,6 +69,7 @@ xx2<-lm(formula = AA_DV ~ AA_Initial+pers_exp+liberal+female+economic+merit+disc
 R2change(model1=xx, model2=xx2) 
 
 R-square change = 0.181 
+
 F(3,704) = 70.537, p = 6.81538788796511e-40 
 
 ## Example 2: Logistic Regression functions
@@ -84,15 +85,15 @@ The LRchi command requires the name of the dataset, definition of all variables 
 LRchi(data=logistic2, y="comply",x1="physrec", x2="knowledg", x3="benefits",x4="barriers", numpred=4)  
 
  Predictor: physrec; LR squared 16.67, p= 0  
- Predictor: knowledg; LR squared 0.01, p= 0.94 
- Predictor: benefits; LR squared 5.29, p= 0.02 
- Predictor: barriers; LR squared 13.77, p= 0 
+ Predictor: knowledg; LR squared 0.01, p= 0.94   
+ Predictor: benefits; LR squared 5.29, p= 0.02   
+ Predictor: barriers; LR squared 13.77, p= 0   
 
 The Psuedo function requires only an existing model as input.   
 
 pseudo(model = Model4) 
 
-Likelihood Ratio R-squared (McFadden, Recommended) = 0.26 
-Cox-Snell R-squared) = 0.301 
-Nagelkerk R-squared  = 0.402 
+Likelihood Ratio R-squared (McFadden, Recommended) = 0.26   
+Cox-Snell R-squared) = 0.301   
+Nagelkerk R-squared  = 0.402   
 
