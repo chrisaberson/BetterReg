@@ -29,47 +29,50 @@ Please post issues using the link above (titled "isssues"). Those interested in 
 
 This project is licensed under GNU General Public License version 3.
 
-## Examples  
+## Example 1 OLS Regression
 
-### part function for squared semipartial correlations  
+Using data from Aberson (2007), the analyses that follow predict support for Affirmative Action (AA) in year 4 of college from incomming attitudes, personal experience with discrimination, liberality, gender, and economic concern for the future. In a later example, I add perceptions of the prevalence of discrimination, endorsement of meritocracy, and partipation in campus diversity events. 
 
 The part function requires an existing LM model and indication of number of predictors.  
 
-library(BetterReg)  
-mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)  
-parts(model=mymodel, pred=5)  
+First, build the model:
+xx<-lm(formula = AA_DV ~ AA_Initial+pers_exp+liberal+female+economic, data = hand5)
 
- Predictor 1: semi partial = 0.032; squared semipartial = 0.001  
- Predictor 2: semi partial = 0.307; squared semipartial = 0.094  
- Predictor 3: semi partial = 0.268; squared semipartial = 0.072  
- Predictor 4: semi partial = 0.134; squared semipartial = 0.018  
- Predictor 5: semi partial = 0.241; squared semipartial = 0.058  
+Then, using the parts command, provide the model name and the number of predictors
+parts(model=xx, pred=5)
 
-### tolerance function for multicollinearity assumptions  
+Predictor 1: semi partial = 0.333; squared semipartial = 0.111
+Predictor 2: semi partial = 0.032; squared semipartial = 0.001
+Predictor 3: semi partial = 0.197; squared semipartial = 0.039
+Predictor 4: semi partial = 0.095; squared semipartial = 0.009
+Predictor 5: semi partial = 0.032; squared semipartial = 0.001
 
-The tolerance function requires only a model.  
+Mahalanobis values require input of model and predictors as well as the number of values to return (10 is the default). 
 
-mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)  
-tolerance(model=mymodel)  
- 
-        x1        x2        x3        x4        x5 
- 0.9976977 0.9990479 0.9931082 0.9953317 0.9980628
+Mahal(model=xx, pred=5, values=10)
+       60      247      639      703      133      157      129      431 
+ 11.08698 11.08698 11.77189 11.93773 12.34983 13.68620 14.15117 14.50515 
+       24      655 
+ 14.72140 15.27508
 
+The tolerance command requires only the model name. 
 
-### Mahal function for detecting multivariate outliers  
+tolerance(model=xx)
+AA_Initial   pers_exp    liberal     female   economic 
+0.9464682  0.9904156  0.9058256  0.9418196  0.9910559
 
-The Mahal function requires model, predictors, and desired number of values to output.  
+R2change compares two models. Below, I added merit, discrimination, and diversity participation to the model (xx2).
+the R2change command takes model1 (xx) and compares it to model2 (xx2). Note that this approach is only for models that are adding variables to a previous model.
 
-mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)  
-Mahal(model=mymodel, pred=5, values=10)  
+xx2<-lm(formula = AA_DV ~ AA_Initial+pers_exp+liberal+female+economic+merit+discrim+div_part, data = hand5)
+R2change(model1=xx, model2=xx2)
 
-      537      770      342      760      299      982      446      174 
- 14.56342 15.03188 15.56224 15.60986 16.52869 16.80958 17.38597 18.11072 
-      458      530 
- 20.02762 25.09934
+R-square change = 0.181
+F(3,704) = 70.537, p = 6.81538788796511e-40
 
+## Example 2: Logistic Regression functions
 
-### LRchi function for Logistic Regression Coefficients  
+In this example, taken from Cohen, Cohen, West, and Aiken (2015), 
 
 The LRchi function takes input for the dependent variable name (y), up to 10 predictors (x1, x2, etc.), and the number of predictors.  
 
