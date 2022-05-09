@@ -23,7 +23,7 @@ car (>= 3.0-0), stats (>= 3.5.0), dplyr (>= 0.8.0)
 
 ## Issues and Contributions  
 
-Please post issues using the link above (titled "issues"). Those interested in contributing to further development should create a pull request. 
+Please post issues using the link above (titled "issues"). Those interested in contributing to further development should create a pull request. For feature requests, submit an issue. 
 
 ## License  
 
