@@ -56,7 +56,7 @@ The R2change function requires two models. Each model must have the same number 
 
 The `depbcomp` function takes requires data and variable names. Dependent coefficients are coefficients from the same regression model. 
 
-    depbcomp(data=testreg,y=y,x1=x1,x2=x2,x3=x3,x4=x4,x5=x5, numpred=5,comps="abs")
+    depbcomp(data=testreg,y="y",x1="x1",x2="x2",x3="x3",x4="x4",x5="x5", numpred=5,comps="abs")
 
     ## Pred 1 vs. Pred 2  : t = 7.004, p = 4.57522908448027e-12
     ## Pred 1 vs. Pred 3  : t = 6.21, p = 7.79647457704868e-10
