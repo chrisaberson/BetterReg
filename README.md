@@ -72,6 +72,22 @@ R-square change = 0.181
 
 F(3,704) = 70.537, p = 6.81538788796511e-40 
 
+The depbcomp function allows for comparisons of  dependent coefficients. These are coefficients in the same model. 
+
+depbcomp(data=hand5,y="AA_DV",x1="div_part",x2="merit", x3="discrim",numpred=3,comps="abs")
+Pred 1 vs. Pred 2  : t = 4.633, p = 4.28730081880602e-06
+Pred 1 vs. Pred 3  : t = 9.614, p = 0
+Pred 2 vs. Pred 3  : t = 5.371, p = 1.0627416191511e-07
+
+The indbcomp function compares predictors from two (identical) model. Note that the model object should be a summary of the model. 
+
+model1<-summary(lm(AA_DV~div_part+merit+ discrim, data=hand5))
+model2<-summary(lm(AA_DV~div_part+merit+ discrim, data=sample2))
+indbcomp(model1=model1, model2=model2, pred=3, comp="abs")
+Predictor 1:  t = 110.812, p = 0
+Predictor 2:  t = 13.623, p = 0
+Predictor 3:  t = 23.958, p = 0
+
 ## Example 2: Logistic Regression functions
 
 In this example, taken from Cohen, Cohen, West, and Aiken (2015), women's compliance with mammography recommendations (i.e., yearly screening in this case) is predicted from physicians recommendation, knowledge of mammography, perceived barriers, and perceived benifits. 
