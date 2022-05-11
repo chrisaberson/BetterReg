@@ -16,25 +16,18 @@
 #'
 
 
-
-indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
+indbcomp<-function(model1=NULL, model2=NULL, comps="abs", pred=NULL)
 {
+  if ((pred =="2") && (comps=="abs")){
 
-  pred1<-model1$df[1]-1
-  pred2<-model2$df[1]-1
-
-  try(if(pred1!=pred2) stop("Models must be identical"))
-
-  if ((pred1 =="2") && (comps=="abs")){
-
-  b1_1<-(model1$coefficients)[2,1]
-  b2_1<-(model1$coefficients)[3,1]
-  b1_2<-(model2$coefficients)[2,1]
-  b2_2<-(model2$coefficients)[3,1]
-  seb1_1<-(model1$coefficients)[2,2]
-  seb2_1<-(model1$coefficients)[3,2]
-  seb1_2<-(model2$coefficients)[2,2]
-  seb2_2<-(model2$coefficients)[3,2]
+  b1_1<-(model1$coefficients)[2,4]
+  b2_1<-(model1$coefficients)[3,4]
+  b1_2<-(model2$coefficients)[2,4]
+  b2_2<-(model2$coefficients)[3,4]
+  seb1_1<-model1$coefficients[2,2]
+  seb2_1<-model1$coefficients[3,2]
+  seb1_2<-model2$coefficients[2,2]
+  seb2_2<-model2$coefficients[3,2]
   sebb1<-((seb1_1^2)+(seb2_1^2))^.5
   sebb2<-((seb1_2^2)+(seb2_2^2))^.5
   t1<-abs(abs(b1_1)-abs(b1_2))/sebb1
@@ -50,20 +43,20 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
   }
 
 
-  if ((pred1 =="3") && (comps=="abs")){
+  if ((pred =="3") && (comps=="abs")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    seb1_1<-(model1$coefficients)[2,2]
-    seb2_1<-(model1$coefficients)[3,2]
-    seb3_1<-(model1$coefficients)[4,2]
-    seb1_2<-(model2$coefficients)[2,2]
-    seb2_2<-(model2$coefficients)[3,2]
-    seb3_2<-(model2$coefficients)[4,2]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    seb1_1<-model1$coefficients[2,2]
+    seb2_1<-model1$coefficients[3,2]
+    seb3_1<-model1$coefficients[4,2]
+    seb1_2<-model2$coefficients[2,2]
+    seb2_2<-model2$coefficients[3,2]
+    seb3_2<-model2$coefficients[4,2]
     sebb1<-((seb1_1^2)+(seb1_2^2))^.5
     sebb2<-((seb2_1^2)+(seb2_2^2))^.5
     sebb3<-((seb3_1^2)+(seb3_2^2))^.5
@@ -83,24 +76,24 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
   }
 
 
-  if ((pred1 =="4") && (comps=="abs")){
+  if ((pred =="4") && (comps=="abs")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    seb1_1<-(model1$coefficients)[2,2]
-    seb2_1<-(model1$coefficients)[3,2]
-    seb3_1<-(model1$coefficients)[4,2]
-    seb4_1<-(model1$coefficients)[5,2]
-    seb1_2<-(model2$coefficients)[2,2]
-    seb2_2<-(model2$coefficients)[3,2]
-    seb3_2<-(model2$coefficients)[4,2]
-    seb4_2<-(model2$coefficients)[5,2]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    seb1_1<-model1$coefficients[2,2]
+    seb2_1<-model1$coefficients[3,2]
+    seb3_1<-model1$coefficients[4,2]
+    seb4_1<-model1$coefficients[5,2]
+    seb1_2<-model2$coefficients[2,2]
+    seb2_2<-model2$coefficients[3,2]
+    seb3_2<-model2$coefficients[4,2]
+    seb4_2<-model2$coefficients[5,2]
     sebb1<-((seb1_1^2)+(seb1_2^2))^.5
     sebb2<-((seb2_1^2)+(seb2_2^2))^.5
     sebb3<-((seb3_1^2)+(seb3_2^2))^.5
@@ -123,28 +116,28 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 3: "," t = ", t3,", p = ", p3)
     message("Predictor 4: "," t = ", t4,", p = ", p4)
   }
-  if ((pred1 =="5") && (comps=="abs")){
+  if ((pred =="5") && (comps=="abs")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    seb1_1<-(model1$coefficients)[2,2]
-    seb2_1<-(model1$coefficients)[3,2]
-    seb3_1<-(model1$coefficients)[4,2]
-    seb4_1<-(model1$coefficients)[5,2]
-    seb5_1<-(model1$coefficients)[6,2]
-    seb1_2<-(model2$coefficients)[2,2]
-    seb2_2<-(model2$coefficients)[3,2]
-    seb3_2<-(model2$coefficients)[4,2]
-    seb4_2<-(model2$coefficients)[5,2]
-    seb5_2<-(model2$coefficients)[6,2]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    seb1_1<-model1$coefficients[2,2]
+    seb2_1<-model1$coefficients[3,2]
+    seb3_1<-model1$coefficients[4,2]
+    seb4_1<-model1$coefficients[5,2]
+    seb5_1<-model1$coefficients[6,2]
+    seb1_2<-model2$coefficients[2,2]
+    seb2_2<-model2$coefficients[3,2]
+    seb3_2<-model2$coefficients[4,2]
+    seb4_2<-model2$coefficients[5,2]
+    seb5_2<-model2$coefficients[6,2]
     sebb1<-((seb1_1^2)+(seb1_2^2))^.5
     sebb2<-((seb2_1^2)+(seb2_2^2))^.5
     sebb3<-((seb3_1^2)+(seb3_2^2))^.5
@@ -172,32 +165,32 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 4: "," t = ", t4,", p = ", p4)
     message("Predictor 5: "," t = ", t5,", p = ", p5)
   }
-  if ((pred1 =="6") && (comps=="abs")){
+  if ((pred =="6") && (comps=="abs")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
-    seb1_1<-(model1$coefficients)[2,2]
-    seb2_1<-(model1$coefficients)[3,2]
-    seb3_1<-(model1$coefficients)[4,2]
-    seb4_1<-(model1$coefficients)[5,2]
-    seb5_1<-(model1$coefficients)[6,2]
-    seb6_1<-(model1$coefficients)[7,2]
-    seb1_2<-(model2$coefficients)[2,2]
-    seb2_2<-(model2$coefficients)[3,2]
-    seb3_2<-(model2$coefficients)[4,2]
-    seb4_2<-(model2$coefficients)[5,2]
-    seb5_2<-(model2$coefficients)[6,2]
-    seb6_2<-(model2$coefficients)[7,2]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
+    seb1_1<-model1$coefficients[2,2]
+    seb2_1<-model1$coefficients[3,2]
+    seb3_1<-model1$coefficients[4,2]
+    seb4_1<-model1$coefficients[5,2]
+    seb5_1<-model1$coefficients[6,2]
+    seb6_1<-model1$coefficients[7,2]
+    seb1_2<-model2$coefficients[2,2]
+    seb2_2<-model2$coefficients[3,2]
+    seb3_2<-model2$coefficients[4,2]
+    seb4_2<-model2$coefficients[5,2]
+    seb5_2<-model2$coefficients[6,2]
+    seb6_2<-model2$coefficients[7,2]
     sebb1<-((seb1_1^2)+(seb1_2^2))^.5
     sebb2<-((seb2_1^2)+(seb2_2^2))^.5
     sebb3<-((seb3_1^2)+(seb3_2^2))^.5
@@ -230,36 +223,36 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 5: "," t = ", t5,", p = ", p5)
     message("Predictor 6: "," t = ", t6,", p = ", p6)
   }
-  if ((pred1 =="7") && (comps=="abs")){
+  if ((pred =="7") && (comps=="abs")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b7_1<-(model1$coefficients)[8,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
-    b7_2<-(model2$coefficients)[8,1]
-    seb1_1<-(model1$coefficients)[2,2]
-    seb2_1<-(model1$coefficients)[3,2]
-    seb3_1<-(model1$coefficients)[4,2]
-    seb4_1<-(model1$coefficients)[5,2]
-    seb5_1<-(model1$coefficients)[6,2]
-    seb6_1<-(model1$coefficients)[7,2]
-    seb7_1<-(model1$coefficients)[8,2]
-    seb1_2<-(model2$coefficients)[2,2]
-    seb2_2<-(model2$coefficients)[3,2]
-    seb3_2<-(model2$coefficients)[4,2]
-    seb4_2<-(model2$coefficients)[5,2]
-    seb5_2<-(model2$coefficients)[6,2]
-    seb6_2<-(model2$coefficients)[7,2]
-    seb7_2<-(model2$coefficients)[8,2]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b7_1<-(model1$coefficients)[8,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
+    b7_2<-(model2$coefficients)[8,4]
+    seb1_1<-model1$coefficients[2,2]
+    seb2_1<-model1$coefficients[3,2]
+    seb3_1<-model1$coefficients[4,2]
+    seb4_1<-model1$coefficients[5,2]
+    seb5_1<-model1$coefficients[6,2]
+    seb6_1<-model1$coefficients[7,2]
+    seb7_1<-model1$coefficients[8,2]
+    seb1_2<-model2$coefficients[2,2]
+    seb2_2<-model2$coefficients[3,2]
+    seb3_2<-model2$coefficients[4,2]
+    seb4_2<-model2$coefficients[5,2]
+    seb5_2<-model2$coefficients[6,2]
+    seb6_2<-model2$coefficients[7,2]
+    seb7_2<-model2$coefficients[8,2]
     sebb1<-((seb1_1^2)+(seb1_2^2))^.5
     sebb2<-((seb2_1^2)+(seb2_2^2))^.5
     sebb3<-((seb3_1^2)+(seb3_2^2))^.5
@@ -298,40 +291,40 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 7: "," t = ", t7,", p = ", p7)
 
   }
-  if ((pred1 =="8") && (comps=="abs")){
+  if ((pred =="8") && (comps=="abs")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b7_1<-(model1$coefficients)[8,1]
-    b8_1<-(model1$coefficients)[9,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
-    b7_2<-(model2$coefficients)[8,1]
-    b8_2<-(model2$coefficients)[9,1]
-    seb1_1<-(model1$coefficients)[2,2]
-    seb2_1<-(model1$coefficients)[3,2]
-    seb3_1<-(model1$coefficients)[4,2]
-    seb4_1<-(model1$coefficients)[5,2]
-    seb5_1<-(model1$coefficients)[6,2]
-    seb6_1<-(model1$coefficients)[7,2]
-    seb7_1<-(model1$coefficients)[8,2]
-    seb8_1<-(model1$coefficients)[9,2]
-    seb1_2<-(model2$coefficients)[2,2]
-    seb2_2<-(model2$coefficients)[3,2]
-    seb3_2<-(model2$coefficients)[4,2]
-    seb4_2<-(model2$coefficients)[5,2]
-    seb5_2<-(model2$coefficients)[6,2]
-    seb6_2<-(model2$coefficients)[7,2]
-    seb7_2<-(model2$coefficients)[8,2]
-    seb8_2<-(model2$coefficients)[9,2]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b7_1<-(model1$coefficients)[8,4]
+    b8_1<-(model1$coefficients)[9,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
+    b7_2<-(model2$coefficients)[8,4]
+    b8_2<-(model2$coefficients)[9,4]
+    seb1_1<-model1$coefficients[2,2]
+    seb2_1<-model1$coefficients[3,2]
+    seb3_1<-model1$coefficients[4,2]
+    seb4_1<-model1$coefficients[5,2]
+    seb5_1<-model1$coefficients[6,2]
+    seb6_1<-model1$coefficients[7,2]
+    seb7_1<-model1$coefficients[8,2]
+    seb8_1<-model1$coefficients[9,2]
+    seb1_2<-model2$coefficients[2,2]
+    seb2_2<-model2$coefficients[3,2]
+    seb3_2<-model2$coefficients[4,2]
+    seb4_2<-model2$coefficients[5,2]
+    seb5_2<-model2$coefficients[6,2]
+    seb6_2<-model2$coefficients[7,2]
+    seb7_2<-model2$coefficients[8,2]
+    seb8_2<-model2$coefficients[9,2]
     sebb1<-((seb1_1^2)+(seb1_2^2))^.5
     sebb2<-((seb2_1^2)+(seb2_2^82))^.5
     sebb3<-((seb3_1^2)+(seb3_2^2))^.5
@@ -374,43 +367,43 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 7: "," t = ", t7,", p = ", p7)
     message("Predictor 8: "," t = ", t8,", p = ", p8)
   }
-  if ((pred1 =="9") && (comps=="abs")){
+  if ((pred =="9") && (comps=="abs")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b7_1<-(model1$coefficients)[8,1]
-    b8_1<-(model1$coefficients)[9,1]
-    b9_1<-(model1$coefficients)[10,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
-    b7_2<-(model2$coefficients)[8,1]
-    b8_2<-(model2$coefficients)[9,1]
-    b9_2<-(model2$coefficients)[10,1]
-    seb1_1<-(model1$coefficients)[2,2]
-    seb2_1<-(model1$coefficients)[3,2]
-    seb3_1<-(model1$coefficients)[4,2]
-    seb4_1<-(model1$coefficients)[5,2]
-    seb5_1<-(model1$coefficients)[6,2]
-    seb6_1<-(model1$coefficients)[7,2]
-    seb7_1<-(model1$coefficients)[8,2]
-    seb8_1<-(model1$coefficients)[9,2]
-    seb9_1<-(model1$coefficients)[10,2]
-    seb1_2<-(model2$coefficients)[2,2]
-    seb2_2<-(model2$coefficients)[3,2]
-    seb3_2<-(model2$coefficients)[4,2]
-    seb4_2<-(model2$coefficients)[5,2]
-    seb5_2<-(model2$coefficients)[6,2]
-    seb6_2<-(model2$coefficients)[7,2]
-    seb7_2<-(model2$coefficients)[8,2]
-    seb8_2<-(model2$coefficients)[9,2]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b7_1<-(model1$coefficients)[8,4]
+    b8_1<-(model1$coefficients)[9,4]
+    b9_1<-(model1$coefficients)[10,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
+    b7_2<-(model2$coefficients)[8,4]
+    b8_2<-(model2$coefficients)[9,4]
+    b9_2<-(model2$coefficients)[10,4]
+    seb1_1<-model1$coefficients[2,2]
+    seb2_1<-model1$coefficients[3,2]
+    seb3_1<-model1$coefficients[4,2]
+    seb4_1<-model1$coefficients[5,2]
+    seb5_1<-model1$coefficients[6,2]
+    seb6_1<-model1$coefficients[7,2]
+    seb7_1<-model1$coefficients[8,2]
+    seb8_1<-model1$coefficients[9,2]
+    seb9_1<-model1$coefficients[10,2]
+    seb1_2<-model2$coefficients[2,2]
+    seb2_2<-model2$coefficients[3,2]
+    seb3_2<-model2$coefficients[4,2]
+    seb4_2<-model2$coefficients[5,2]
+    seb5_2<-model2$coefficients[6,2]
+    seb6_2<-model2$coefficients[7,2]
+    seb7_2<-model2$coefficients[8,2]
+    seb8_2<-model2$coefficients[9,2]
     seb9_2<-(model2$coefficients)[10,2]
     sebb1<-((seb1_1^2)+(seb1_2^2))^.5
     sebb2<-((seb2_1^2)+(seb2_2^2))^.5
@@ -459,28 +452,28 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 8: "," t = ", t8,", p = ", p8)
     message("Predictor 9: "," t = ", t9,", p = ", p9)
   }
-  if ((pred1 =="10") && (comps=="abs")){
+  if ((pred =="10") && (comps=="abs")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b7_1<-(model1$coefficients)[8,1]
-    b8_1<-(model1$coefficients)[9,1]
-    b9_1<-(model1$coefficients)[10,1]
-    b10_1<-(model1$coefficients)[11,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
-    b7_2<-(model2$coefficients)[8,1]
-    b8_2<-(model2$coefficients)[9,1]
-    b9_2<-(model2$coefficients)[10,1]
-    b10_2<-(model2$coefficients)[11,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b7_1<-(model1$coefficients)[8,4]
+    b8_1<-(model1$coefficients)[9,4]
+    b9_1<-(model1$coefficients)[10,4]
+    b10_1<-(model1$coefficients)[11,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
+    b7_2<-(model2$coefficients)[8,4]
+    b8_2<-(model2$coefficients)[9,4]
+    b9_2<-(model2$coefficients)[10,4]
+    b10_2<-(model2$coefficients)[11,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb3_1<-(model1$coefficients)[4,2]
@@ -553,12 +546,12 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 9: "," t = ", t9,", p = ", p9)
     message("Predictor 10: "," t = ", t10,", p = ", p10)
   }
-  if ((pred1 =="2") && (comps=="raw")){
+  if ((pred =="2") && (comps=="raw")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb1_2<-(model2$coefficients)[2,2]
@@ -578,14 +571,14 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
   }
 
 
-  if ((pred1 =="3") && (comps=="raw")){
+  if ((pred =="3") && (comps=="raw")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb3_1<-(model1$coefficients)[4,2]
@@ -611,16 +604,16 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
   }
 
 
-  if ((pred1 =="4") && (comps=="raw")){
+  if ((pred =="4") && (comps=="raw")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb3_1<-(model1$coefficients)[4,2]
@@ -651,18 +644,18 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 3: "," t = ", t3,", p = ", p3)
     message("Predictor 4: "," t = ", t4,", p = ", p4)
   }
-  if ((pred1 =="5") && (comps=="raw")){
+  if ((pred =="5") && (comps=="raw")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb3_1<-(model1$coefficients)[4,2]
@@ -700,20 +693,20 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 4: "," t = ", t4,", p = ", p4)
     message("Predictor 5: "," t = ", t5,", p = ", p5)
   }
-  if ((pred1 =="6") && (comps=="raw")){
+  if ((pred =="6") && (comps=="raw")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb3_1<-(model1$coefficients)[4,2]
@@ -758,22 +751,22 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 5: "," t = ", t5,", p = ", p5)
     message("Predictor 6: "," t = ", t6,", p = ", p6)
   }
-  if ((pred1 =="7") && (comps=="raw")){
+  if ((pred =="7") && (comps=="raw")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b7_1<-(model1$coefficients)[8,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
-    b7_2<-(model2$coefficients)[8,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b7_1<-(model1$coefficients)[8,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
+    b7_2<-(model2$coefficients)[8,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb3_1<-(model1$coefficients)[4,2]
@@ -826,24 +819,24 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 7: "," t = ", t7,", p = ", p7)
 
   }
-  if ((pred1 =="8") && (comps=="raw")){
+  if ((pred =="8") && (comps=="raw")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b7_1<-(model1$coefficients)[8,1]
-    b8_1<-(model1$coefficients)[9,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
-    b7_2<-(model2$coefficients)[8,1]
-    b8_2<-(model2$coefficients)[9,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b7_1<-(model1$coefficients)[8,4]
+    b8_1<-(model1$coefficients)[9,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
+    b7_2<-(model2$coefficients)[8,4]
+    b8_2<-(model2$coefficients)[9,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb3_1<-(model1$coefficients)[4,2]
@@ -902,26 +895,26 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 7: "," t = ", t7,", p = ", p7)
     message("Predictor 8: "," t = ", t8,", p = ", p8)
   }
-  if ((pred1 =="9") && (comps=="raw")){
+  if ((pred =="9") && (comps=="raw")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b7_1<-(model1$coefficients)[8,1]
-    b8_1<-(model1$coefficients)[9,1]
-    b9_1<-(model1$coefficients)[10,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
-    b7_2<-(model2$coefficients)[8,1]
-    b8_2<-(model2$coefficients)[9,1]
-    b9_2<-(model2$coefficients)[10,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b7_1<-(model1$coefficients)[8,4]
+    b8_1<-(model1$coefficients)[9,4]
+    b9_1<-(model1$coefficients)[10,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
+    b7_2<-(model2$coefficients)[8,4]
+    b8_2<-(model2$coefficients)[9,4]
+    b9_2<-(model2$coefficients)[10,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb3_1<-(model1$coefficients)[4,2]
@@ -987,28 +980,28 @@ indbcomp<-function(model1=NULL, model2=NULL, comps="abs")
     message("Predictor 8: "," t = ", t8,", p = ", p8)
     message("Predictor 9: "," t = ", t9,", p = ", p9)
   }
-  if ((pred1 =="10") && (comps=="raw")){
+  if ((pred =="10") && (comps=="raw")){
 
-    b1_1<-(model1$coefficients)[2,1]
-    b2_1<-(model1$coefficients)[3,1]
-    b3_1<-(model1$coefficients)[4,1]
-    b4_1<-(model1$coefficients)[5,1]
-    b5_1<-(model1$coefficients)[6,1]
-    b6_1<-(model1$coefficients)[7,1]
-    b7_1<-(model1$coefficients)[8,1]
-    b8_1<-(model1$coefficients)[9,1]
-    b9_1<-(model1$coefficients)[10,1]
-    b10_1<-(model1$coefficients)[11,1]
-    b1_2<-(model2$coefficients)[2,1]
-    b2_2<-(model2$coefficients)[3,1]
-    b3_2<-(model2$coefficients)[4,1]
-    b4_2<-(model2$coefficients)[5,1]
-    b5_2<-(model2$coefficients)[6,1]
-    b6_2<-(model2$coefficients)[7,1]
-    b7_2<-(model2$coefficients)[8,1]
-    b8_2<-(model2$coefficients)[9,1]
-    b9_2<-(model2$coefficients)[10,1]
-    b10_2<-(model2$coefficients)[11,1]
+    b1_1<-(model1$coefficients)[2,4]
+    b2_1<-(model1$coefficients)[3,4]
+    b3_1<-(model1$coefficients)[4,4]
+    b4_1<-(model1$coefficients)[5,4]
+    b5_1<-(model1$coefficients)[6,4]
+    b6_1<-(model1$coefficients)[7,4]
+    b7_1<-(model1$coefficients)[8,4]
+    b8_1<-(model1$coefficients)[9,4]
+    b9_1<-(model1$coefficients)[10,4]
+    b10_1<-(model1$coefficients)[11,4]
+    b1_2<-(model2$coefficients)[2,4]
+    b2_2<-(model2$coefficients)[3,4]
+    b3_2<-(model2$coefficients)[4,4]
+    b4_2<-(model2$coefficients)[5,4]
+    b5_2<-(model2$coefficients)[6,4]
+    b6_2<-(model2$coefficients)[7,4]
+    b7_2<-(model2$coefficients)[8,4]
+    b8_2<-(model2$coefficients)[9,4]
+    b9_2<-(model2$coefficients)[10,4]
+    b10_2<-(model2$coefficients)[11,4]
     seb1_1<-(model1$coefficients)[2,2]
     seb2_1<-(model1$coefficients)[3,2]
     seb3_1<-(model1$coefficients)[4,2]
