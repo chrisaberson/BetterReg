@@ -2,7 +2,7 @@
 #'@param model1 Summary of first model (see example for how to summarize)
 #'@param model2 Summary of second model (see example for how to summarize)
 #'@param comps Type of comparison. "abs" - absolute value of coefficient
-#'(recommended). "raw" raw values of coefficient
+#'@param pred Number of predictors
 #'@examples
 #'y_1<-rnorm(200); x1_1<-rnorm(200); x2_1<-rnorm(200)
 #'y_2<-rnorm(200); x1_2<-rnorm(200);x2_2<-rnorm(200)
@@ -10,7 +10,7 @@
 #'df2<-as.data.frame(cbind(y_2, x1_2,x2_2))
 #'model1_2<-summary(lm(y_1~x1_1+x2_1, data=df1))
 #'model2_2<-summary(lm(y_2~x1_2+x2_2, data=df2))
-#'indbcomp(model1 = model1_2, model2 = model2_2, comps="abs")
+#'indbcomp(model1 = model1_2, model2 = model2_2, comps="abs", pred=2)
 #'@return Comparing Independent Coefficients in Multiple Regression
 #'@export
 #'
