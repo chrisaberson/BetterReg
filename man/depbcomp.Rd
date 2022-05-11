@@ -44,5 +44,5 @@ Power for Comparing Dependent Coefficients in Multiple Regression with Two or Th
 Requires correlations between all variables as sample size. Means, sds, and alpha are option. Also computes Power(All)
 }
 \examples{
-depbcomp(data=testreg,y=y,x1=x1,x2=x2,x3=x3,x4=x4,x5=x5, numpred=5,comps="abs")
+depbcomp(data=testreg,y="y",x1="x1",x2="x2",x3="x3",x4="x4",x5="x5", numpred=5,comps="abs")
 }

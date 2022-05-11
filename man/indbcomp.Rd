@@ -4,7 +4,7 @@
 \alias{indbcomp}
 \title{Comparing Independent Coefficients in Multiple Regression}
 \usage{
-indbcomp(model1 = NULL, model2 = NULL, comps = "abs")
+indbcomp(model1 = NULL, model2 = NULL, comps = "abs", pred = NULL)
 }
 \arguments{
 \item{model1}{Summary of first model (see example for how to summarize)}
