@@ -11,8 +11,9 @@ indbcomp(model1 = NULL, model2 = NULL, comps = "abs", pred = NULL)
 
 \item{model2}{Summary of second model (see example for how to summarize)}
 
-\item{comps}{Type of comparison. "abs" - absolute value of coefficient
-(recommended). "raw" raw values of coefficient}
+\item{comps}{Type of comparison. "abs" - absolute value of coefficient}
+
+\item{pred}{Number of predictors}
 }
 \value{
 Comparing Independent Coefficients in Multiple Regression
@@ -27,5 +28,5 @@ df1<-as.data.frame(cbind(y_1, x1_1,x2_1))
 df2<-as.data.frame(cbind(y_2, x1_2,x2_2))
 model1_2<-summary(lm(y_1~x1_1+x2_1, data=df1))
 model2_2<-summary(lm(y_2~x1_2+x2_2, data=df2))
-indbcomp(model1 = model1_2, model2 = model2_2, comps="abs")
+indbcomp(model1 = model1_2, model2 = model2_2, comps="abs", pred=2)
 }
