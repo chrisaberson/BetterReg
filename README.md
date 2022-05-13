@@ -11,7 +11,7 @@ Distances, Likelihood Ratio Chi-square, and Pseudo R-square.
 
 ### Prerequisites  
 
-I built this under R 4.1.1
+I built this under R 4.1.3
 
 ## Authors  
 
