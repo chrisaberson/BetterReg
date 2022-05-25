@@ -33,9 +33,12 @@ BetterReg functions require existing regression models (either OLS or Logistic f
 The `part` function requires an existing LM model and indication of
 number of predictors.
 
+```
+
     library(BetterReg)
     mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)
     parts(model=mymodel, pred=5)
+```
 
     ## Predictor 1: semi partial = 0.032; squared semipartial = 0.001
     ## Predictor 2: semi partial = 0.307; squared semipartial = 0.094
@@ -46,9 +49,9 @@ number of predictors.
 ## `R2change` function for addressing improvement in $R^2$ between models
 
 The R2change function requires two models. Each model must have the same number of rows. 
-
+```
     R2change(model1=mymodel1, model2=mymodel2)
-
+```
     ## R-square change = 0.09
     ## F(2,995) = 54.764, p = 2.73174803699611e-23
     
@@ -56,8 +59,9 @@ The R2change function requires two models. Each model must have the same number 
 
 The `depbcomp` function takes requires data and variable names. Dependent coefficients are coefficients from the same regression model. 
 
+```
     depbcomp(data=testreg,y="y",x1="x1",x2="x2",x3="x3",x4="x4",x5="x5", numpred=5,comps="abs")
-
+```
     ## Pred 1 vs. Pred 2  : t = 7.004, p = 4.57522908448027e-12
     ## Pred 1 vs. Pred 3  : t = 6.21, p = 7.79647457704868e-10
     ## Pred 1 vs. Pred 4  : t = 2.751, p = 0.00604702058333784
@@ -73,7 +77,9 @@ The `depbcomp` function takes requires data and variable names. Dependent coeffi
 
 The `indbcomp` function requires data and variable names from two different samples. Independent coefficients are coefficients from different samples using the same regression model. 
 
+```
 indbcomp(model1 = model1_2, model2 = model2_2, comps="abs")
+```
 
     ## Predictor 1:  t = 0.362, p = 0.718
     ## Predictor 2:  t = 0.265, p = 0.792
@@ -81,10 +87,10 @@ indbcomp(model1 = model1_2, model2 = model2_2, comps="abs")
 ## `tolerance` function for multicollinearity assumptions
 
 The `tolerance` function requires only a model.
-
+```
     mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)
     tolerance(model=mymodel)
-
+```
     ##        x1        x2        x3        x4        x5 
     ## 0.9976977 0.9990479 0.9931082 0.9953317 0.9980628
 
@@ -93,32 +99,34 @@ The `tolerance` function requires only a model.
 The `Mahal` function requires model, predictors, and desired number of
 values to output.
 
+```
     mymodel<-lm(y~x1+x2+x3+x4+x5, data=testreg)
     Mahal(model=mymodel, pred=5, values=10)
-
+```
     ##      537      770      342      760      299      982      446      174 
     ## 14.56342 15.03188 15.56224 15.60986 16.52869 16.80958 17.38597 18.11072 
     ##      458      530 
     ## 20.02762 25.09934
 
-## `LRchi` function for Logistic Regression Coefficients
+
+## `LRchi` function for logistic regression likelihood ratio chi square
 
 The `LRchi` function takes input for the dependent variable name (y), up
 to 10 predictors (x1, x2, etc.), and the number of predictors.
-
+```
     LRchi(data=testlog, y="dv", x1="iv1", x2="iv2",numpred=2)
-
+```
     ## Predictor: iv1; LR squared 34.09, p= 0
 
     ## Predictor: iv2; LR squared 0.19, p= 0.67
 
 ## `Pseudo` function for Logistic Regression Effect Size
 
-The `Psuedo` function takes an existing model as input
-
+The `Pseudo` function takes an existing model as input
+```
     mymodel<-glm(dv~iv1+iv2+iv3+iv4, testlog,family = binomial())
     pseudo(model=mymodel)
-
+```
     ## Likelihood Ratio R-squared (McFadden, Recommended) = 0.26
     ## Cox-Snell R-squared) = 0.301
     ## Nagelkerk R-squared  = 0.402
