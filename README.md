@@ -1,6 +1,6 @@
 # BetterReg Readme
 
-Chris Aberson May 13, 2022
+Chris Aberson May 25, 2022
 
 # BetterReg  
 
@@ -11,7 +11,7 @@ Distances, Likelihood Ratio Chi-square, and Pseudo R-square.
 
 ### Prerequisites  
 
-I built this under R 4.1.3
+I built this under R 4.2.0
 
 ## Authors  
 
@@ -28,6 +28,12 @@ Please post issues using the link above (titled "issues"). Those interested in c
 ## License  
 
 This project is licensed under GNU General Public License version 3.
+
+## Installation 
+
+The package is available on CRAN. This respository will usually include a beta version for the next release. To install from GitHub - in R issue the command below.
+
+devtools::install_github("chrisaberson/BetterReg")
 
 ## Example 1: OLS Regression
 
