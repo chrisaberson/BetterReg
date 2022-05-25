@@ -80,8 +80,8 @@ Pred 2 vs. Pred 3  : t = 5.371, p = 1.0627416191511e-07
 
 The `indbcomp` function compares predictors from two (identical) model. Note that the model object should be a summary of the model. 
 
-model1<-summary(lm(AA_DV~div_part+merit+ discrim, data=hand5))    
-model2<-summary(lm(AA_DV~div_part+merit+ discrim, data=sample2))    
+model1<-summary(lm(AA_DV~div_part+merit+ discrim, data=hand5))  
+model2<-summary(lm(AA_DV~div_part+merit+ discrim, data=sample2))   
 indbcomp(model1=model1, model2=model2, pred=3, comp="abs")    
 Predictor 1:  t = 110.812, p = 0  
 Predictor 2:  t = 13.623, p = 0  
