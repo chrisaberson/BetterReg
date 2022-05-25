@@ -28,9 +28,9 @@ The target audience for this package is researchers using Ordinary Least Squares
 
 BetterReg functions require existing regression models (either OLS or Logistic for most statistics), dataset names (for some approaches), number of predictors (some functions), and desired amount of output (Mahal function). 
 
-## `part` function for squared semipartial correlations
+## `parts` function for squared semipartial correlations
 
-The `part` function requires an existing LM model and indication of
+The `parts` function requires an existing LM model and indication of
 number of predictors.
 
     library(BetterReg)
@@ -114,7 +114,7 @@ to 10 predictors (x1, x2, etc.), and the number of predictors.
 
 ## `Pseudo` function for Logistic Regression Effect Size
 
-The `Psuedo` function takes an existing model as input
+The `pseudo` function takes an existing model as input
 
     mymodel<-glm(dv~iv1+iv2+iv3+iv4, testlog,family = binomial())
     pseudo(model=mymodel)
