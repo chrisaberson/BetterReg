@@ -109,6 +109,6 @@ The `pseudo` function requires only an existing model as input.
 pseudo(model = Model4) 
 
 Likelihood Ratio R-squared (McFadden, Recommended) = 0.26   
-Cox-Snell R-squared) = 0.301   
+Cox-Snell R-squared  = 0.301   
 Nagelkerk R-squared  = 0.402   
 
