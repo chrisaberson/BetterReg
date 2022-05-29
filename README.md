@@ -48,58 +48,62 @@ xx<-lm(formula = AA_DV ~ AA_Initial+pers_exp+liberal+female+economic, data = han
 Then, using the parts command, provide the model name and the number of predictors  
 ```
 parts(model=xx, pred=5)  
-```
+
+##
 Predictor 1: semi partial = 0.333; squared semipartial = 0.111  
 Predictor 2: semi partial = 0.032; squared semipartial = 0.001  
 Predictor 3: semi partial = 0.197; squared semipartial = 0.039  
 Predictor 4: semi partial = 0.095; squared semipartial = 0.009  
 Predictor 5: semi partial = 0.032; squared semipartial = 0.001  
-
+```
 The `Mahal` function provides Mahalanobis values and requires input of model and predictors as well as the number of values to return (10 is the default). 
 ```
 Mahal(model=xx, pred=5, values=10)  
-```
-      
+
+##
      60      247      639      703      133      157      129      431     24      655
  11.08698 11.08698 11.77189 11.93773 12.34983 13.68620 14.15117 14.50515 14.72140 15.27508     
- 
+```
 
 The `tolerance` command requires only the model name. 
 ```
 tolerance(model=xx)  
-```
+##
 AA_Initial   pers_exp    liberal     female   economic  
 0.9464682  0.9904156  0.9058256  0
 9418196  0.9910559   
+```
 
 `R2change` compares two models. Below, I added merit, discrimination, and diversity participation to the model (xx2).  
 the R2change command takes model1 (xx) and compares it to model2 (xx2). Note that this approach is only for models that are adding variables to a previous model.
 ```
 xx2<-lm(formula = AA_DV ~ AA_Initial+pers_exp+liberal+female+economic+merit+discrim+div_part, data = hand5) 
 R2change(model1=xx, model2=xx2) 
-```
+##
 R-square change = 0.181 
 
 F(3,704) = 70.537, p = 6.81538788796511e-40 
+```
 
 The `depbcomp` function allows for comparisons of  dependent coefficients. These are coefficients in the same model.   
 ```
 depbcomp(data=sample1,y="AA_DV",x1="div_part",x2="merit", x3="discrim",numpred=3,comps="abs")  
-```
+##
 Pred 1 vs. Pred 2  : t = 4.633, p = 4.28730081880602e-06  
 Pred 1 vs. Pred 3  : t = 9.614, p = 0  
 Pred 2 vs. Pred 3  : t = 5.371, p = 1.0627416191511e-07  
-
+```
 The `indbcomp` function compares predictors from two (identical) model. Note that the model object should be a summary of the model. 
 
 ```
 model1<-summary(lm(AA_DV~ div_part+merit+ discrim, data=hand5))  
 model2<-summary(lm(AA_DV~ div_part+merit+ discrim, data=sample2))   
 indbcomp(model1=model1, model2=model2, pred=3, comp="abs")    
-```
+##
 Predictor 1:  t = 110.812, p = 0  
 Predictor 2:  t = 13.623, p = 0  
 Predictor 3:  t = 23.958, p = 0  
+```
 
 ## Example 2: Logistic Regression functions
 
@@ -112,17 +116,17 @@ Model4<-glm(comply~physrec+knowledg+benefits+barriers, data=logistic2, family = 
 The `LRchi` command requires the name of the dataset, definition of all variables in mode (y, x1, x2, etc.), and the number of model predictors. 
 ```
 LRchi(data=logistic2, y="comply",x1="physrec", x2="knowledg", x3="benefits",x4="barriers", numpred=4)  
-```
+##
  Predictor: physrec; LR squared 16.67, p= 0  
  Predictor: knowledg; LR squared 0.01, p= 0.94   
  Predictor: benefits; LR squared 5.29, p= 0.02   
  Predictor: barriers; LR squared 13.77, p= 0   
-
+```
 The `pseudo` function requires only an existing model as input.   
 ```
 pseudo(model = Model4) 
-```
+##
 Likelihood Ratio R-squared (McFadden, Recommended) = 0.26   
 Cox-Snell R-squared  = 0.301   
 Nagelkerk R-squared  = 0.402   
-
+```
