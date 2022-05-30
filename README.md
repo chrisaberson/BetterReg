@@ -31,7 +31,7 @@ This project is licensed under GNU General Public License version 3.
 
 ## Installation 
 
-The package is available on CRAN. This respository will usually include a beta version for the next release. To install from GitHub - in R issue the command below.
+The package is available on CRAN. Use the command install.packages("BetterReg"). This respository will usually include a beta version for the next release. To install from GitHub - in R issue the command below.
 
 devtools::install_github("chrisaberson/BetterReg")
 
