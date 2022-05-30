@@ -18,7 +18,7 @@ bibliography: paper.bib
 
 # Summary
 
-Statistics such as squared semi partial correlations, tolerance, and Mahalanobis Distances are useful for reporting the results of OLS Regression [@tabachnick_using_2019]. Similarly values such as the Likelihood Ratio Chi-square  @cohen_applied_2015) and Likelihood R-square (@menard_logistic_2010). Such statistics are not part of base R (@r_core_team_r_2022) popular packages such *car* (@fox_r_2019). To fill these gaps, I developed BetterReg to provide these values. 
+Statistics such as squared semi partial correlations, tolerance, and Mahalanobis Distances are useful for reporting the results of OLS Regression [@tabachnick_using_2019]. Similarly values such as the Likelihood Ratio Chi-square  [@cohen_applied_2015] and Likelihood R-square [@menard_logistic_2010]. Such statistics are not part of base R [@r_core_team_r_2022] popular packages such *car* [@fox_r_2019]. To fill these gaps, I developed BetterReg to provide these values. 
 
 Squared semipartial correlations provide a measure of uniquely explained variances that is on the same scale as $R^2$ values. Tolerance values address multicollinearity by addressing variance unexplained in a predictor. Mahalanabis Distances are a popular measure of multivariate outliers that are presented on an $\chi^2$ scale. The Likelihood Ratio $\chi^2$ provides a significance test that is more stable than the commonly presented Wald Test for logistic regression. The Likelihood Ratio $\chi^2$ is the most widely recommended Pseudo $R^2$ statistic for logistic. 
 
