@@ -18,11 +18,11 @@ bibliography: paper.bib
 
 # Summary
 
-Statistics such as squared semi partial correlations, tolerance, and Mahalanobis Distances are useful for reporting the results of OLS (Ordinary Least Squares) Regression [@tabachnick_using_2019]. Similarly values such as the Likelihood Ratio Chi-square  [@cohen_applied_2015] and Likelihood R-square [@menard_logistic_2010]. Such statistics are not part of base R [@r_core_team_r_2022] popular packages such as *car* [@fox_r_2019]. To fill these gaps, the BetterReg package is developed to provide these statistics and measures. 
+Statistics such as squared semi partial correlations, tolerance, and Mahalanobis Distances are useful for reporting the results of OLS (Ordinary Least Squares) Regression [@tabachnick_using_2019] as well as Likelihood Ratio Chi-square  [@cohen_applied_2002] and Likelihood R-square [@menard_logistic_2010]. Such statistics are not part of base R [@r_core_team_r_2022] popular packages such as *car* [@fox_r_2019]. To fill these gaps, the BetterReg package is developed to provide these statistics and measures. 
 
 Squared semipartial correlations provide a measure of uniquely explained variances that is on the same scale as $R^2$ values. Tolerance values address multi-collinearity by addressing variance unexplained in a predictor. Mahalanabis Distance is a popular measure of multi-variate outliers that are presented on a $\chi^2$ scale. The Likelihood Ratio $\chi^2$ provides a significance test that is more stable than the commonly presented Wald Test and the Likelihood Ratio $\chi^2$ is the most widely recommended Pseudo $R^2$ statistic for the Logistic Regression. 
 
-The target audience for this package is researchers using OLS and Logistic Regression. Presently, there is not any R packages that provide these statistics, so the calculation requires researchers to write their own code. These statistics are widely available in commercial programs such as SAS, SPSS, and Stata.
+The target audience for this package is researchers using OLS and Logistic Regression. Presently, there is not any R package that provides those statistics, so the calculation requires researchers to write their own code. These statistics are widely available in commercial programs such as SAS, SPSS, and Stata.
 
 # Usage
 
@@ -36,7 +36,7 @@ number of predictors:
 ```R
     library(BetterReg)
     mymodel <- lm(y~x1+x2+x3+x4+x5, data = testreg)
-    parts(model=mymodel, pred=5)
+    parts(model = mymodel, pred = 5)
 ```
 
     ## Predictor 1: semi partial = 0.032; squared semipartial = 0.001
