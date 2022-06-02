@@ -90,7 +90,8 @@ indbcomp(model1 = model1_2, model2 = model2_2, comps = "abs")
 ## `tolerance` function for multicollinearity assumptions
 
 The `tolerance` function requires only a model.
-```
+
+```R
     mymodel <- lm(y~x1+x2+x3+x4+x5, data = testreg)
     tolerance(model = mymodel)
 ```
