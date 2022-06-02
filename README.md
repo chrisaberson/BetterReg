@@ -35,6 +35,9 @@ The package is available on CRAN. Use the command install.packages("BetterReg").
 
 devtools::install_github("chrisaberson/BetterReg")
 
+## Paper
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.04280/status.svg)](https://doi.org/10.21105/joss.04280)
+
 ## Example 1: OLS Regression
 
 Using data from Aberson (2007), the analyses that follow predict support for Affirmative Action (AA) in year 4 of college from incomming attitudes, personal experience with discrimination, liberality, gender, and economic concern for the future. In a later example, I add perceptions of the prevalence of discrimination, endorsement of meritocracy, and partipation in campus diversity events. 
